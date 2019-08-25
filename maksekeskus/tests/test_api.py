@@ -1,6 +1,7 @@
 import unittest
 import maksekeskus.api as api
 from maksekeskus.models import Customer, Transaction
+from decimal import *
 
 
 class TestMaksekeskusAPI(unittest.TestCase):
@@ -40,14 +41,22 @@ class TestMaksekeskusAPI(unittest.TestCase):
         )
 
     def test_create_transaction(self):
-        amount = 13.37
+        amount = 13
+        transaction = self.create_transaction(amount)
+        print(transaction)
+        self.assertIn("_links", transaction)
+        self.assertIn("payment_methods", transaction)
+        self.assertEqual(13, transaction["amount"])
+
+    def test_create_transaction_decimal(self):
+        amount = Decimal("13.37")
         transaction = self.create_transaction(amount)
         self.assertIn("_links", transaction)
         self.assertIn("payment_methods", transaction)
-        self.assertEqual(amount, transaction["amount"])
+        self.assertTrue(amount, transaction["amount"])
 
     def test_create_and_get_transaction(self):
-        amount = 13.37
+        amount = Decimal("13.37")
         transaction = self.create_transaction(amount)
         print(transaction['id'])
         transaction = self.api.get_transaction(transaction['id'])

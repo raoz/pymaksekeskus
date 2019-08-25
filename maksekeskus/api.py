@@ -1,5 +1,5 @@
 import requests
-import json
+import simplejson as json
 from maksekeskus.errors import MaksekeskusError
 from requests.auth import HTTPBasicAuth
 
@@ -56,7 +56,7 @@ class MaksekeskusAPI:
             )
         )
         if r.ok:
-            return json.loads(r.text)
+            return json.loads(r.text, use_decimal=True)
         else:
             raise MaksekeskusError(r.text)
 
