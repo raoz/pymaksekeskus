@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="maksekeskus",
-    version="0.0.2",
+    version="0.0.3",
     author="Rao Zvorovski",
     author_email="rao.zvorovski@codeduf.eu",
     description="Library to use the Maksekeskus(Makecommerce) APIs",
@@ -13,6 +13,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/raoz/pymaksekeskus",
     packages=setuptools.find_packages(),
+    install_requires = [
+        'requests',
+        'simplejson'
+    ],
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
