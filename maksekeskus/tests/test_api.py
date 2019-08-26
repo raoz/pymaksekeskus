@@ -8,10 +8,10 @@ class TestMaksekeskusAPI(unittest.TestCase):
 
     def setUp(self):
         self.api = api.MaksekeskusAPI(
-            True,
-            "1ca58c6f-89c2-442f-950a-cd5fa3484397",
-            "4amoXJ9cGuoD4zoQDdmCSCbGb3he2ef2IbazM4nUOMjSPQEABave8vnoc6I7sNf9",
-            "3TT6Jlm5YWvsdT0p5w5bqRuhnr9F5FIYpsVYE8UsVfKYZBeUXaVdRgl4ykAuQ8j5"
+            False,
+            "f7741ab2-7445-45f9-9af4-0d0408ef1e4c",
+            "pfOsGD9oPaFEILwqFLHEHkPf7vZz4j3t36nAcufP1abqT9l99koyuC1IWAOcBeqt",
+            "zPA6jCTIvGKYqrXxlgkXLzv3F82Mjv2E"
         )
 
     def tearDown(self):
@@ -36,7 +36,19 @@ class TestMaksekeskusAPI(unittest.TestCase):
             Transaction(
                 amount=amount,
                 currency="EUR",
-                reference="pymaksekeskus test fee"
+                reference="pymaksekeskus test fee",
+                return_url = {
+                    'method': 'POST',
+                    'url': "https://codeduf.eu"
+                    },
+                notification_url = {
+                    'method': 'POST',
+                    'url': "https://codeduf.eu"
+                    },
+                cancel_url = {
+                    'method': 'POST',
+                    'url': "https://codeduf.eu"
+                    },
             )
         )
 

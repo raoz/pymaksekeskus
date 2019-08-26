@@ -48,6 +48,12 @@ class Transaction:
 
     def dict(self):
         self.validate()
+        if self.cancel_url is not None and  self.notification_url is not None and self.return_url is not None:
+            transaction_url = {
+                "cancel_url": self.cancel_url,
+                "notification_url": self.notification_url,
+                "return_url": self.return_url,
+                }
         return {k: v for k, v in
                 {
                     "amount": self.amount,
@@ -56,9 +62,7 @@ class Transaction:
                     "merchant_data": self.merchant_data,
                     "recurring_required": self.recurring_required,
                     "reference": self.reference,
-                    "cancel_url": self.cancel_url,
-                    "notification_url": self.notification_url,
-                    "return_url": self.return_url
+                    "transaction_url": transaction_url,
                 }.items()
                 if v is not None
                 }

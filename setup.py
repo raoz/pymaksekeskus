@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="maksekeskus",
-    version="0.0.3",
+    version="0.0.4",
     author="Rao Zvorovski",
     author_email="rao.zvorovski@codeduf.eu",
     description="Library to use the Maksekeskus(Makecommerce) APIs",
