@@ -34,6 +34,9 @@ class MaksekeskusAPI:
     def _calculate_mac(self, data):
         return hashlib.sha512(data + self.api_secret_key).hexdigest().upper()
 
+    def validate_mac(self, data, mac):
+        return self._calculate_mac(data) == mac
+
     def request(self, path, params=None, payload=None, method=None, use_secret_key=True):
         if payload is not None:
             method = "POST"
