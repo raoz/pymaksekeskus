@@ -1,17 +1,22 @@
+import os
 import unittest
 import maksekeskus.api as api
 from maksekeskus.models import Customer, Transaction
 from decimal import *
 
+CREDENTIAL_VARS = ("MAKSEKESKUS_SHOP_ID", "MAKSEKESKUS_SECRET_KEY", "MAKSEKESKUS_PUBLISHABLE_KEY")
+MISSING_CREDENTIALS = [name for name in CREDENTIAL_VARS if not os.environ.get(name)]
 
+
+@unittest.skipIf(MISSING_CREDENTIALS, "Maksekeskus test-environment credentials not set: " + ", ".join(MISSING_CREDENTIALS))
 class TestMaksekeskusAPI(unittest.TestCase):
 
     def setUp(self):
         self.api = api.MaksekeskusAPI(
             False,
-            "f7741ab2-7445-45f9-9af4-0d0408ef1e4c",
-            "pfOsGD9oPaFEILwqFLHEHkPf7vZz4j3t36nAcufP1abqT9l99koyuC1IWAOcBeqt",
-            "zPA6jCTIvGKYqrXxlgkXLzv3F82Mjv2E"
+            os.environ["MAKSEKESKUS_SHOP_ID"],
+            os.environ["MAKSEKESKUS_SECRET_KEY"],
+            os.environ["MAKSEKESKUS_PUBLISHABLE_KEY"],
         )
 
     def tearDown(self):
