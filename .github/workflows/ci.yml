@@ -25,9 +25,5 @@ jobs:
           python -m pip install . pytest
       - name: Compile check
         run: python -m compileall -q maksekeskus
-      - name: Run tests (sandbox tests skipped unless secrets are set)
+      - name: Run tests
         run: python -m pytest -v
-        env:
-          MAKSEKESKUS_SHOP_ID: ${{ secrets.MAKSEKESKUS_SHOP_ID }}
-          MAKSEKESKUS_SECRET_KEY: ${{ secrets.MAKSEKESKUS_SECRET_KEY }}
-          MAKSEKESKUS_PUBLISHABLE_KEY: ${{ secrets.MAKSEKESKUS_PUBLISHABLE_KEY }}
