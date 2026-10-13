@@ -10,7 +10,7 @@ class MaksekeskusAPI:
 
     def __init__(self, live, store_id, api_secret_key, api_publishable_key,
                  version=1, session=None, timeout=30, proxies=None):
-        self.base_url = "https://api.maksekeskus.ee" if live else "https://api-test.maksekeskus.ee"
+        self.base_url = "https://api.maksekeskus.ee" if live else "https://api.test.maksekeskus.ee"
         self.store_id = store_id
         self.api_secret_key = api_secret_key
         self.api_publishable_key = api_publishable_key
