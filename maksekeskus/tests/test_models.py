@@ -40,7 +40,7 @@ class TestRequest(unittest.TestCase):
         api, session = self.make_api(text='{"amount": 13.37}')
         result = api.get_transaction("abc")
         args, kwargs = session.request.call_args
-        self.assertEqual(("GET", "https://api-test.maksekeskus.ee/v1/transactions/abc"), args)
+        self.assertEqual(("GET", "https://api.test.maksekeskus.ee/v1/transactions/abc"), args)
         self.assertEqual("secret", kwargs["auth"].password)
         self.assertEqual(Decimal("13.37"), result["amount"])
 
